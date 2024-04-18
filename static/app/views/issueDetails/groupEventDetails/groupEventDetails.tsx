@@ -71,8 +71,6 @@ function GroupEventDetails(props: GroupEventDetailsProps) {
     params,
   } = props;
   const eventWithMeta = withMeta(event);
-  // Reprocessing
-  const hasReprocessingV2Feature = organization.features?.includes('reprocessing-v2');
   const {activity: activities} = group;
   const mostRecentActivity = getGroupMostRecentActivity(activities);
   const projectId = project.id;
@@ -176,8 +174,7 @@ function GroupEventDetails(props: GroupEventDetailsProps) {
         isLoading={loadingEvent}
       >
         <StyledLayoutBody data-test-id="group-event-details">
-          {hasReprocessingV2Feature &&
-          groupReprocessingStatus === ReprocessingStatus.REPROCESSING ? (
+          {groupReprocessingStatus === ReprocessingStatus.REPROCESSING ? (
             <ReprocessingProgress
               totalEvents={(mostRecentActivity as GroupActivityReprocess).data.eventCount}
               pendingEvents={
