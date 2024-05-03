@@ -99,12 +99,11 @@ class EnableNotificationsActionTest(BaseEventTest):
                 },
             ]
         }
-        with self.feature("organizations:slack-block-kit"):
-            response = self.post_webhook_block_kit(
-                action_data=[{"name": "enable_notifications", "value": "all_slack"}],
-                original_message=original_message,
-                data={"callback_id": json.dumps({"enable_notifications": True})},
-            )
+        response = self.post_webhook_block_kit(
+            action_data=[{"name": "enable_notifications", "value": "all_slack"}],
+            original_message=original_message,
+            data={"callback_id": json.dumps({"enable_notifications": True})},
+        )
         self.user.refresh_from_db()  # Reload to fetch actor
         assert response.status_code == 200, response.content
         assert response.data["text"] == ENABLE_SLACK_SUCCESS_MESSAGE
