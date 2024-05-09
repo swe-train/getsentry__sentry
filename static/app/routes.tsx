@@ -3,7 +3,11 @@ import {IndexRedirect, Redirect} from 'react-router';
 import memoize from 'lodash/memoize';
 
 import LazyLoad from 'sentry/components/lazyLoad';
-import {EXPERIMENTAL_SPA, USING_CUSTOMER_DOMAIN} from 'sentry/constants';
+import {
+  EXPERIMENTAL_SPA,
+  USING_CUSTOMER_DOMAIN,
+  USING_REACT_ROUTER_SIX,
+} from 'sentry/constants';
 import {t} from 'sentry/locale';
 import HookStore from 'sentry/stores/hookStore';
 import type {HookName} from 'sentry/types/hooks';
@@ -25,6 +29,7 @@ import RouteNotFound from 'sentry/views/routeNotFound';
 import SettingsWrapper from 'sentry/views/settings/components/settingsWrapper';
 
 import {IndexRoute, Route} from './components/route';
+import {buildReactRouter6Routes, ProvideGlobalHistory} from './utils/reactRouter6Compat';
 
 const hook = (name: HookName) => HookStore.get(name).map(cb => cb());
 
@@ -687,15 +692,13 @@ function buildRoutes() {
           )}
         />
       )}
-      {USING_CUSTOMER_DOMAIN && (
-        <Route
-          path="/settings/organization/"
-          name={t('General')}
-          component={make(
-            () => import('sentry/views/settings/organizationGeneralSettings')
-          )}
-        />
-      )}
+      <Route
+        path="organization/"
+        name={t('General')}
+        component={make(
+          () => import('sentry/views/settings/organizationGeneralSettings')
+        )}
+      />
       <Route
         path="projects/"
         name={t('Projects')}
@@ -2204,7 +2207,7 @@ function buildRoutes() {
   );
 
   const appRoutes = (
-    <Route>
+    <Route component={USING_REACT_ROUTER_SIX ? ProvideGlobalHistory : undefined}>
       {experimentalSpaRoutes}
       <Route path="/" component={errorHandler(App)}>
         {rootRoutes}
@@ -2221,6 +2224,10 @@ function buildRoutes() {
 // We load routes both when initializing the SDK (for routing integrations) and
 // when the app renders Main. Memoize to avoid rebuilding the route tree.
 export const routes = memoize(buildRoutes);
+
+// XXX(epurkhiser): Transforms the legacy react-router 3 routest tree into a
+// react-router 6 style routes tree.
+export const routes6 = buildReactRouter6Routes(buildRoutes());
 
 // Exported for use in tests.
 export {buildRoutes};
