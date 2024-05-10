@@ -1,6 +1,10 @@
 import {useCallback} from 'react';
 
 import {browserHistory} from 'sentry/utils/browserHistory';
+import {useLocation} from 'sentry/utils/useLocation';
+
+// TODO(epurkhiser): Once we're on react-router 6 we should replace this with
+// their useSearchParams hook
 
 function useUrlParams(
   defaultKey: string,
@@ -18,27 +22,25 @@ function useUrlParams(): {
   setParamValue: (key: string, value: string) => void;
 };
 function useUrlParams(defaultKey?: string, defaultValue?: string) {
+  const location = useLocation();
+
   const getParamValue = useCallback(
     (key: string) => {
-      const location = browserHistory.getCurrentLocation();
       // location.query.key can return string[] but we expect a singular value from this function, so we return the first string (this is picked arbitrarily) if it's string[]
       return Array.isArray(location.query[key])
         ? location.query[key]?.at(0) ?? defaultValue
         : location.query[key] ?? defaultValue;
     },
-    [defaultValue]
+    [defaultValue, location.query]
   );
 
-  const setParamValue = useCallback((key: string, value: string) => {
-    const location = browserHistory.getCurrentLocation();
-    browserHistory.push({
-      ...location,
-      query: {
-        ...location.query,
-        [key]: value,
-      },
-    });
-  }, []);
+  const setParamValue = useCallback(
+    (key: string, value: string) => {
+      const query = {...location.query, [key]: value};
+      browserHistory.push({...location, query});
+    },
+    [location]
+  );
 
   const getWithDefault = useCallback(
     () => getParamValue(defaultKey || ''),

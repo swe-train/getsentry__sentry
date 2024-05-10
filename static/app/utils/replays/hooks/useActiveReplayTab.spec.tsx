@@ -64,8 +64,13 @@ describe('useActiveReplayTab', () => {
 
     result.current.setActiveTab('nEtWoRk');
     expect(mockPush).toHaveBeenLastCalledWith({
+      action: 'PUSH',
+      hash: '',
+      key: '',
       pathname: '',
-      query: {t_main: TabKey.NETWORK},
+      search: '',
+      state: undefined,
+      query: {query: '', t_main: TabKey.NETWORK},
     });
   });
 
@@ -77,8 +82,13 @@ describe('useActiveReplayTab', () => {
 
     result.current.setActiveTab('foo bar');
     expect(mockPush).toHaveBeenLastCalledWith({
+      action: 'PUSH',
+      hash: '',
+      key: '',
       pathname: '',
-      query: {t_main: TabKey.BREADCRUMBS},
+      search: '',
+      state: undefined,
+      query: {query: '', t_main: TabKey.BREADCRUMBS},
     });
   });
 });

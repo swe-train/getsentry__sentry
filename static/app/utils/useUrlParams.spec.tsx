@@ -4,6 +4,7 @@ import {renderHook} from 'sentry-test/reactTestingLibrary';
 
 import {browserHistory} from 'sentry/utils/browserHistory';
 
+import {useLocation} from './useLocation';
 import useUrlParams from './useUrlParams';
 
 jest.mock('react-router');
@@ -13,7 +14,7 @@ type Query = {array: string[]; limit: string; page: string};
 
 describe('useUrlParams', () => {
   beforeEach(() => {
-    jest.mocked(browserHistory.getCurrentLocation).mockReturnValue({
+    jest.mocked(useLocation).mockReturnValue({
       query: {
         page: '3',
         limit: '50',
