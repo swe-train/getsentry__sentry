@@ -579,7 +579,9 @@ def dedup_errors(errors):
 
 
 @sentry_sdk.tracing.trace
-def process_stacktraces(data, make_processors=None, set_raw_stacktrace=True):
+def process_stacktraces(
+    data: MutableMapping[str, Any], make_processors=None, set_raw_stacktrace=True
+) -> MutableMapping[str, Any]:
     infos = find_stacktraces_in_data(data, include_empty_exceptions=True)
     if make_processors is None:
         processors = get_processors_for_stacktraces(data, infos)

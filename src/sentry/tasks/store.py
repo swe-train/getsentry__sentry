@@ -1,6 +1,6 @@
 import logging
 import random
-from collections.abc import Mapping
+from collections.abc import Mapping, MutableMapping
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from time import time
@@ -29,7 +29,7 @@ from sentry.stacktraces.processing import process_stacktraces, should_process_fo
 from sentry.tasks.base import instrumented_task
 from sentry.types.activity import ActivityType
 from sentry.utils import metrics
-from sentry.utils.canonical import CANONICAL_TYPES, CanonicalKeyDict
+from sentry.utils.canonical import CANONICAL_TYPES
 from sentry.utils.dates import to_datetime
 from sentry.utils.safe import safe_execute
 from sentry.utils.sdk import set_current_event_project
@@ -42,7 +42,7 @@ class RetryProcessing(Exception):
     pass
 
 
-def should_process(data: CanonicalKeyDict[Any]) -> bool:
+def should_process(data: Mapping[str, Any]) -> bool:
     """Quick check if processing is needed at all."""
     from sentry.plugins.base import plugins
 
@@ -150,7 +150,6 @@ def _do_preprocess_event(
         return
 
     original_data = data
-    data = CanonicalKeyDict(data)
     project_id = data["project"]
     set_current_event_project(project_id)
 
@@ -317,7 +316,7 @@ def do_process_event(
     start_time: float | None,
     event_id: str | None,
     from_reprocessing: bool,
-    data: Event | None = None,
+    data: MutableMapping[str, Any] | None = None,
     data_has_changed: bool = False,
     from_symbolicate: bool = False,
     has_attachments: bool = False,
@@ -333,8 +332,6 @@ def do_process_event(
         )
         error_logger.error("process.failed.empty", extra={"cache_key": cache_key})
         return
-
-    data = CanonicalKeyDict(data)
 
     project_id = data["project"]
     set_current_event_project(project_id)
@@ -397,14 +394,12 @@ def do_process_event(
     # re-normalization as it is hard to find sensitive data in partially
     # trimmed strings.
     if has_changed:
-        new_data = safe_execute(
-            scrub_data, project=project, event=data.data, _with_transaction=False
-        )
+        new_data = safe_execute(scrub_data, project=project, event=data, _with_transaction=False)
 
         # XXX(markus): When datascrubbing is finally "totally stable", we might want
         # to drop the event if it crashes to avoid saving PII
         if new_data is not None:
-            data.data = new_data
+            data = new_data
 
     # TODO(dcramer): ideally we would know if data changed by default
     # Default event processors.
@@ -663,7 +658,6 @@ def create_failed_event(
         error_logger.error("process.failed_raw.empty", extra={"cache_key": cache_key})
         return True
 
-    original_data = CanonicalKeyDict(original_data)
     from sentry.models.processingissue import ProcessingIssue
     from sentry.models.rawevent import RawEvent
 
@@ -714,15 +708,12 @@ def _do_save_event(
             event_type = data.get("type") or "none"
 
     with metrics.global_tags(event_type=event_type):
-        if data is not None:
-            data = CanonicalKeyDict(data)
-
         if event_id is None and data is not None:
             event_id = data["event_id"]
 
         # only when we come from reprocessing we get a project_id sent into
         # the task.
-        if project_id is None:
+        if project_id is None and data is not None:
             project_id = data.pop("project")
             set_current_event_project(project_id)
 
@@ -730,6 +721,7 @@ def _do_save_event(
         # reprocessing.  If the data cannot be found we want to assume
         # that we need to delete the raw event.
         if not data or reprocessing.event_supports_reprocessing(data):
+            assert project_id is not None
             delete_raw_event(project_id, event_id)
 
         # This covers two cases: where data is None because we did not manage
@@ -747,6 +739,8 @@ def _do_save_event(
                 "events.failed", tags={"reason": "cache", "stage": "post"}, skip_internal=False
             )
             return
+
+        assert project_id is not None
 
         try:
             if killswitch_matches_context(

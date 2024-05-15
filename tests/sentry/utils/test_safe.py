@@ -9,7 +9,6 @@ from unittest.mock import Mock, patch
 import pytest
 
 from sentry.testutils.cases import TestCase
-from sentry.utils.canonical import CanonicalKeyDict
 from sentry.utils.safe import (
     get_path,
     safe_execute,
@@ -123,7 +122,6 @@ class GetPathTest(unittest.TestCase):
         assert get_path({"a": 2}, "b") is None
         assert get_path({"a": {"b": []}}, "a", "b") == []
         assert get_path({"a": []}, "a", "b") is None
-        assert get_path(CanonicalKeyDict({"a": 2}), "a") == 2
 
     def test_get_default(self):
         assert get_path({"a": 2}, "b", default=1) == 1
@@ -185,7 +183,6 @@ class SetPathTest(unittest.TestCase):
         assert set_path(data, "a", "b", value=42)
         assert data == {"a": {"b": 42}}
 
-        data = CanonicalKeyDict({})
         assert set_path(data, "a", value=42)
         assert data == {"a": 42}
 

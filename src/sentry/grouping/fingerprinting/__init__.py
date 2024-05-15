@@ -137,7 +137,7 @@ class EventAccess:
         if self._frames is None:
             self._frames = []
 
-        find_stack_frames(self.event.data, self._push_frame)
+        find_stack_frames(self.event, self._push_frame)
         return self._frames
 
     def get_toplevel(self) -> list[dict[str, str]]:
