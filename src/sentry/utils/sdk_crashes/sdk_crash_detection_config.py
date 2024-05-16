@@ -27,6 +27,7 @@ class SdkName(Enum):
     ReactNative = "react-native"
     Java = "java"
     Native = "native"
+    Dart = "dart"
 
 
 @dataclass
@@ -255,6 +256,38 @@ def build_sdk_crash_detection_configs() -> Sequence[SDKCrashDetectionConfig]:
             sdk_crash_ignore_functions_matchers=set(),
         )
         configs.append(native_config)
+
+    dart_options = _get_options(sdk_name=SdkName.Dart, has_organization_allowlist=True)
+
+    if dart_options:
+        dart_config = SDKCrashDetectionConfig(
+            sdk_name=SdkName.Dart,
+            project_id=dart_options["project_id"],
+            sample_rate=dart_options["sample_rate"],
+            organization_allowlist=dart_options["organization_allowlist"],
+            sdk_names=["sentry.dart", "sentry.dart.flutter"],
+            # Since 8.2.0 the Dart SDK sends SDK frames, which is required;
+            # see https://github.com/getsentry/sentry-dart/releases/tag/8.2.0
+            min_sdk_version="8.2.0",
+            system_library_path_patterns={
+                # Dart
+                r"org-dartlang-sdk:///**",
+                r"dart:**/**",
+                # Flutter
+                r"**/packages/flutter/**",
+                r"package:flutter/**",
+            },
+            sdk_frame_config=SDKFrameConfig(
+                function_patterns=set(),
+                path_patterns={
+                    r"package:sentry/**",  # sentry-dart
+                    r"package:sentry_flutter/**",  # sentry-dart-flutter
+                },
+                path_replacer=KeepFieldPathReplacer(fields={"package", "filename", "abs_path"}),
+            ),
+            sdk_crash_ignore_functions_matchers=set(),
+        )
+        configs.append(dart_config)
 
     return configs
 
