@@ -1237,13 +1237,6 @@ register(
     "sentry-metrics.indexer.reconstruct.enable-orjson", default=0.0, flags=FLAG_AUTOMATOR_MODIFIABLE
 )
 
-# Option to enable direct storage queries for meta queries in the metrics layer
-register(
-    "sentry-metrics.metrics-layer.use-storage-direct-meta-queries",
-    default=0.0,
-    flags=FLAG_AUTOMATOR_MODIFIABLE,
-)
-
 # Option to remove support for percentiles on a per-org basis.
 # Add the org_id to list to disable percentiles.
 register(
