@@ -179,7 +179,6 @@ export function MessageSpanSamplesPanel() {
       SpanIndexedField.MESSAGING_MESSAGE_RECEIVE_LATENCY,
       SpanIndexedField.MESSAGING_MESSAGE_RETRY_COUNT,
       SpanIndexedField.MESSAGING_MESSAGE_ID,
-      SpanIndexedField.MESSAGING_MESSAGE_DESTINATION_NAME,
       SpanIndexedField.TRACE_STATUS,
       SpanIndexedField.SPAN_DURATION,
     ],
@@ -278,6 +277,7 @@ export function MessageSpanSamplesPanel() {
           <ModuleLayout.Full>
             <PanelControls>
               <CompactSelect
+                searchable
                 value={query.status}
                 options={STATUS_OPTIONS}
                 onChange={handleStatusChange}
