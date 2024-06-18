@@ -2884,12 +2884,19 @@
   dependencies:
     "@sentry-internal/rrweb-snapshot" "2.12.0"
 
-"@sentry-internal/rrweb-player@2.12.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-player/-/rrweb-player-2.12.0.tgz#85cda4723baac13e9730278df4698f253513443c"
-  integrity sha512-SJeMiYFRhYvLZ8D6LbuVrtKdHAjqS57OnmAovcOAWJwCnUTGeA5YzPzT/G8elWfWsW/qWD1moaq1gF8Xdl6rpg==
+"@sentry-internal/rrdom@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/rrdom/-/rrdom-2.23.0.tgz#ba46dc4566ad935c4d84ce2a6e3b8ea585c7c67e"
+  integrity sha512-XOOGuDsS6M1xxpUD7GblnBw8n6yNN7FtjAxZpz7R9KDLVIOJUHZadVgptx+wQ8Itkq1Bwwy70R8d9eW2+abD7Q==
   dependencies:
-    "@sentry-internal/rrweb" "2.12.0"
+    "@sentry-internal/rrweb-snapshot" "2.23.0"
+
+"@sentry-internal/rrweb-player@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-player/-/rrweb-player-2.23.0.tgz#0dfee8e56a32870e11f5402ca3d18b756d677f62"
+  integrity sha512-FeraFnSrHgJoS5bJO/fyYqQjmtijns9ZDosCzxfECyvNlklhIuFp6aojCArSreyhqdH3JS3cEvYKSXrYQDDlCA==
+  dependencies:
+    "@sentry-internal/rrweb" "2.23.0"
     "@tsconfig/svelte" "^1.0.0"
 
 "@sentry-internal/rrweb-snapshot@2.12.0":
@@ -2897,12 +2904,25 @@
   resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-snapshot/-/rrweb-snapshot-2.12.0.tgz#2f1f6d4867a07ab757475fb4fa337d7f1aaa6b2d"
   integrity sha512-AYo8CeDA7qDOKFG75E+bnxrS/qm7l5Ad0ftClA3VzoGV58bNNgv/aKiECtUPk0UPs4EqTQ8z8W/MZ9EYDF6vvA==
 
+"@sentry-internal/rrweb-snapshot@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-snapshot/-/rrweb-snapshot-2.23.0.tgz#6cc8ccbf728d59d768df1cc439acb905f72606db"
+  integrity sha512-Pp63ZOWlQlTkwnoFKDlPVPVSmq4PRskMcrSvPoSWIw8AT3nlhWuxddXsgH6juXylZ8zCQu9qR9DQtyCTZooxqQ==
+
 "@sentry-internal/rrweb-types@2.12.0":
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-types/-/rrweb-types-2.12.0.tgz#f7c57eda7610882c71860437657ffbbcb788184d"
   integrity sha512-W0iLlTx3HeapBTGjg/uLoKQr1/DGPbkANqwjf4mW0IS4jHAVcxFX/e769aHHKEmd68Lm3+A8b08xdA9UDBXW5w==
   dependencies:
     "@sentry-internal/rrweb-snapshot" "2.12.0"
+
+"@sentry-internal/rrweb-types@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb-types/-/rrweb-types-2.23.0.tgz#b419b93f83478f63cd44eb1e54a1a03a14f4a108"
+  integrity sha512-Nx4n1rmWSliievmhaG9MmOxSF0/IgGpeGpzzlO7UiHXzg6vpjax6ObqaP2JgP5YP34DHGk32V5TFjCpVdkjn7Q==
+  dependencies:
+    "@sentry-internal/rrweb-snapshot" "2.23.0"
+    "@types/css-font-loading-module" "0.0.7"
 
 "@sentry-internal/rrweb@2.12.0":
   version "2.12.0"
@@ -2912,6 +2932,20 @@
     "@sentry-internal/rrdom" "2.12.0"
     "@sentry-internal/rrweb-snapshot" "2.12.0"
     "@sentry-internal/rrweb-types" "2.12.0"
+    "@types/css-font-loading-module" "0.0.7"
+    "@xstate/fsm" "^1.4.0"
+    base64-arraybuffer "^1.0.1"
+    fflate "^0.4.4"
+    mitt "^3.0.0"
+
+"@sentry-internal/rrweb@2.23.0":
+  version "2.23.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/rrweb/-/rrweb-2.23.0.tgz#ca939aee59550e5bd123d3fb474295ed37938de1"
+  integrity sha512-2S3fSqSIo0ZyP5v0JMWwDbORVp2TmgHzxUd7/vDGBxs5PW5pJAhVrFZnjdw3W/1mfKyVpwiTfTwTfr+v7FSB3g==
+  dependencies:
+    "@sentry-internal/rrdom" "2.23.0"
+    "@sentry-internal/rrweb-snapshot" "2.23.0"
+    "@sentry-internal/rrweb-types" "2.23.0"
     "@types/css-font-loading-module" "0.0.7"
     "@xstate/fsm" "^1.4.0"
     base64-arraybuffer "^1.0.1"
@@ -10980,7 +11014,16 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
+string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -11046,7 +11089,14 @@ string_decoder@^1.1.1, string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -12023,7 +12073,16 @@ word-wrap@~1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.4.tgz#cb4b50ec9aca570abd1f52f33cd45b6c61739a9f"
   integrity sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
