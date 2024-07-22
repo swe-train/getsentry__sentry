@@ -2427,12 +2427,12 @@
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-stately/collections@^3.10.4":
-  version "3.10.4"
-  resolved "https://registry.yarnpkg.com/@react-stately/collections/-/collections-3.10.4.tgz#aa81328a0996ba39ee39d469e65135812ebecef1"
-  integrity sha512-OHhCrItGt4zB2bSrgObRo0H2SC7QlkH8ReGxo+NVIWchXRLRoiWBP7S+IwleewEo5gOqDVPY3hqA9n4iiI8twg==
+"@react-stately/collections@^3.10.4", "@react-stately/collections@^3.10.8":
+  version "3.10.8"
+  resolved "https://registry.yarnpkg.com/@react-stately/collections/-/collections-3.10.8.tgz#9add13208ae90e56c602e76c4c59b71dd69aba94"
+  integrity sha512-vjatckkgKmEyvDFW2Iktf3g4qF0rxnQdpKV4mkvWdTJaYLVoLmy0PjLP+bp+Re38o7CV3TcrURK+YweYUNKyQA==
   dependencies:
-    "@react-types/shared" "^3.22.0"
+    "@react-types/shared" "^3.24.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-stately/form@^3.0.0":
@@ -2506,14 +2506,14 @@
     "@react-types/shared" "^3.22.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-stately/selection@^3.14.2":
-  version "3.14.2"
-  resolved "https://registry.yarnpkg.com/@react-stately/selection/-/selection-3.14.2.tgz#6a3d5b59db951c34d04494b28373f4fe8ce6f581"
-  integrity sha512-mL7OoiUgVWaaF7ks5XSxgbXeShijYmD4G3bkBHhqkpugU600QH6BM2hloCq8KOUupk1y8oTljPtF9EmCv375DA==
+"@react-stately/selection@^3.14.2", "@react-stately/selection@^3.16.0":
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/@react-stately/selection/-/selection-3.16.0.tgz#ee1a43eef1603998b0a8adb23fac81cd465c4490"
+  integrity sha512-9aD69pFs9eImmPy1i3TN+xslaC3ymwWL8wNYVv/zTwjGbjfJ2OnLpwe1rUW6J4ZRjNNFfousKJVe/3LGtSMe2A==
   dependencies:
-    "@react-stately/collections" "^3.10.4"
-    "@react-stately/utils" "^3.9.0"
-    "@react-types/shared" "^3.22.0"
+    "@react-stately/collections" "^3.10.8"
+    "@react-stately/utils" "^3.10.2"
+    "@react-types/shared" "^3.24.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-stately/slider@^3.5.0":
@@ -2545,21 +2545,21 @@
     "@react-types/checkbox" "^3.6.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-stately/tree@^3.7.5":
-  version "3.7.5"
-  resolved "https://registry.yarnpkg.com/@react-stately/tree/-/tree-3.7.5.tgz#6e084e1b7d3d0b31fe619a5d5c45dea9b0a63ff2"
-  integrity sha512-xTJVwvhAeY0N5rui4N/TxN7f8hjXdqApDuGDxMZeFAWoQz8Abf7LFKBVQ3OkT6qVr7P+23dgoisUDBhD5a45Hg==
+"@react-stately/tree@^3.7.5", "@react-stately/tree@^3.8.2":
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/@react-stately/tree/-/tree-3.8.2.tgz#594ed229a899291c04c1f79d09c6d2c57dcf339a"
+  integrity sha512-7+bI/4ZKJbUMOQArml5XGBzHp5sIiiRzLUqDnmM52bi7iCpARN3RbvHmzjVMOWaezwkOr0C6ISkzk4iTY7VS1g==
   dependencies:
-    "@react-stately/collections" "^3.10.4"
-    "@react-stately/selection" "^3.14.2"
-    "@react-stately/utils" "^3.9.0"
-    "@react-types/shared" "^3.22.0"
+    "@react-stately/collections" "^3.10.8"
+    "@react-stately/selection" "^3.16.0"
+    "@react-stately/utils" "^3.10.2"
+    "@react-types/shared" "^3.24.0"
     "@swc/helpers" "^0.5.0"
 
-"@react-stately/utils@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.9.0.tgz#9cb2c8eea5dd1b58256ecb436b963c01526bae37"
-  integrity sha512-yPKFY1F88HxuZ15BG2qwAYxtpE4HnIU0Ofi4CuBE0xC6I8mwo4OQjDzi+DZjxQngM9D6AeTTD6F1V8gkozA0Gw==
+"@react-stately/utils@^3.10.2", "@react-stately/utils@^3.9.0":
+  version "3.10.2"
+  resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.10.2.tgz#09377f771592ff537c901aa64178cb3a004a916f"
+  integrity sha512-fh6OTQtbeQC0ywp6LJuuKs6tKIgFvt/DlIZEcIpGho6/oZG229UnIk6TUekwxnDbumuYyan6D9EgUtEMmT8UIg==
   dependencies:
     "@swc/helpers" "^0.5.0"
 
@@ -2629,10 +2629,10 @@
   dependencies:
     "@react-types/shared" "^3.22.0"
 
-"@react-types/shared@^3.22.0":
-  version "3.22.0"
-  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.22.0.tgz#70f85aad46cd225f7fcb29f1c2b5213163605074"
-  integrity sha512-yVOekZWbtSmmiThGEIARbBpnmUIuePFlLyctjvCbgJgGhz8JnEJOipLQ/a4anaWfzAgzSceQP8j/K+VOOePleA==
+"@react-types/shared@^3.22.0", "@react-types/shared@^3.24.0":
+  version "3.24.0"
+  resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.24.0.tgz#5b649a9e814497486c04977b2d816258e0dafd2f"
+  integrity sha512-0mTSGqxq1ETwVLgpBKb7XzCLh0/agnH7a9EbOMonVwWJbuYw2YP8S3VwOMvFrvVToqYir4Z/xS5Waiz+0Ix1dQ==
 
 "@react-types/slider@^3.7.0":
   version "3.7.0"
@@ -10980,7 +10980,16 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
+string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -11046,7 +11055,14 @@ string_decoder@^1.1.1, string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -12023,7 +12039,16 @@ word-wrap@~1.2.3:
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.4.tgz#cb4b50ec9aca570abd1f52f33cd45b6c61739a9f"
   integrity sha512-2V81OA4ugVo5pRo46hAoD2ivUJx8jXmWXfUkY4KFNw0hEptvN0QfH3K4nHiwzGeKl5rFKedV48QVoqYavy4YpA==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
